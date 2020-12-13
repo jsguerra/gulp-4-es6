@@ -2,10 +2,11 @@
   "name": "gulp-4-es6",
   "version": "1.0.0",
   "description": "A Gulp 4 ES6 build",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "keywords": [
+    "gulp",
+    "es6",
+    "scss"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jsguerra/gulp-4-es6.git"
@@ -17,6 +18,29 @@
   },
   "homepage": "https://github.com/jsguerra/gulp-4-es6#readme",
   "devDependencies": {
-    "gulp": "^4.0.2"
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.10",
+    "autoprefixer": "^10.1.0",
+    "browser-sync": "^2.26.13",
+    "browserify": "^17.0.0",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^9.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-uglify": "^3.0.2",
+    "node-sass": "^5.0.0",
+    "postcss": "^8.2.1",
+    "postcss-combine-media-query": "^1.0.1",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   }
 }
