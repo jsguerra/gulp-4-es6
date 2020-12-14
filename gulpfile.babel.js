@@ -43,7 +43,7 @@ const styleWatch = scssSrc + '**/*.scss',
 // CSS Task
 const cssTask = () => {
   return src(scssSrc + 'style.scss', { sourcemaps: true })
-    .pipe(plumber())
+
     .pipe(sass({
       outputStyle: 'compressed'
     }).on('error', sass.logError))
@@ -116,7 +116,7 @@ function reload(done) {
 const startServer = (done) => {
   browserSync.init({
     server: {
-      baseDir: './app/'
+      baseDir: './app'
     }
   });
 
@@ -126,7 +126,8 @@ const startServer = (done) => {
 // Watch Task
 const watchTask = (done) => {
   watch(styleWatch, cssTask);
-  watch(jsWatch, series(browserifyTask, jsTask, reload));
+  // watch(jsWatch, browserify)
+  watch(jsWatch, series(jsTask, reload));
   watch(imgWatch, series(imageTask, reload));
   watch(fontsWatch, series(fontsTask, reload));
   watch(htmlWatch, series(htmlTask, reload));
@@ -135,7 +136,9 @@ const watchTask = (done) => {
 }
 
 // Exports
-exports.default = parallel(
-  series(cssTask, browserifyTask, jsTask, imageTask, fontsTask, htmlTask),
+exports.default = series(
+  series(cssTask, jsTask, imageTask, fontsTask, htmlTask),
   series(startServer, watchTask)
 )
+
+// exports.bulid = parallel(cssTask, browserifyTask, jsTask, imageTask, fontsTask, htmlTask);
