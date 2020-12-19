@@ -36,8 +36,8 @@ const scssSrc = './src/scss/',
 // Watch files
 const styleWatch = scssSrc + '**/*.scss',
       jsWatch = jsSrc + '**/*.js',
-      imgWatch = imgSrc + '**/*.*',
-      fontsWatch = fontSrc + '**/*.*',
+      imgWatch = imgSrc + '**/*.{png,jpg,jpeg,gif,svg}',
+      fontsWatch = fontSrc + '**/*.{svg,eot,ttf,woff,woff2}',
       htmlWatch = './src/**/*.html';
 
 // CSS Task
@@ -75,7 +75,8 @@ const jsTask = () => {
     .pipe(babel({ presets: ['@babel/preset-env']}))
     .pipe(uglify())
     .pipe(rename({suffix: '.min'}))
-    .pipe(dest(app + '/js/', { sourcemaps: '.' }));
+    .pipe(dest(app + '/js/', { sourcemaps: '.' })
+  );
 }
 
 // Image Task
